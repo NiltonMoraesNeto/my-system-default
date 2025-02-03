@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "nilton@nilton.com",
+      "password": "senha123"
+    },
+    {
+      "id": "254e",
+      "email": "marina@marina.com",
+      "password": "senha123"
+    }
+  ],
+  "usuario": [
+    {
+      "id": "1",
+      "nome": "Nilton Moraes Neto",
+      "email": "nilton@nilton.com",
+      "dateCreated": "13/11/1993",
+      "sexo": "Masculino",
+      "telefone": "41988825493",
+      "cep": "80430210",
+      "logradouro": "Rua Brigadeiro Franco",
+      "bairro": "Mercês",
+      "cidade": "Curitiba",
+      "estado": "PR",
+      "numero": "1",
+      "complemento": "1"
+    },
+    {
+      "nome": "Marina",
+      "email": "marina@marina.com",
+      "dateCreated": "17/08/2024",
+      "sexo": "Feminino",
+      "telefone": "41999999999",
+      "cep": "80430210",
+      "logradouro": "Rua Brigadeiro Franco",
+      "bairro": "Mercês",
+      "cidade": "Curitiba",
+      "estado": "PR",
+      "numero": "1",
+      "complemento": "1",
+      "id": "8f80"
+    }
+  ]
+}
