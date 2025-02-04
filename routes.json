@@ -1,6 +1,0 @@
-{
-  "/api/*": "/$1",
-  "/login": "/login",
-  "/logout": "/logout",
-  "/verify-token": "/verify-token"
-}

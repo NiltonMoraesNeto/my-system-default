@@ -41,3 +41,17 @@ export const usuarioPost = async (usuarioData: object) => {
     return false;
   }
 };
+
+export const usuarioCount = async () => {
+  try {
+    const response = await api.get('/usuario');
+    
+    if (response.data) {
+      return response.data.length
+    }
+    return false;
+  } catch (error) {
+    console.error('Erro ao buscar a contagem de usuários', error);
+    return false;
+  }
+};
