@@ -5,19 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, UserPlus, UserCheck, Activity } from "lucide-react";
 import { usuarioCount } from "@/services/usuario";
 
-// Função mock para simular a obtenção de dados do backend
-const fetchDashboardData = async () => {
-  // Simula uma chamada de API
-  const responseCountUser = await usuarioCount();
-  console.log("🚀  responseCountUser - ", responseCountUser);
-  return {
-    totalUsers: responseCountUser,
-    activeUsers: responseCountUser,
-    newUsers: responseCountUser,
-    userGrowth: 100,
-  };
-};
-
 export default function Dashboard() {
   const [dashboardData, setDashboardData] = useState({
     totalUsers: 0,
@@ -25,6 +12,16 @@ export default function Dashboard() {
     newUsers: 0,
     userGrowth: 0,
   });
+
+  const fetchDashboardData = async () => {
+    const responseCountUser = await usuarioCount();
+    return {
+      totalUsers: responseCountUser,
+      activeUsers: responseCountUser,
+      newUsers: responseCountUser,
+      userGrowth: 100,
+    };
+  };
 
   useEffect(() => {
     const loadDashboardData = async () => {
