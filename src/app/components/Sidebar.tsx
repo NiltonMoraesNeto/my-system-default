@@ -13,7 +13,6 @@ import {
   LogOut,
   Sun,
   Moon,
-  Laptop,
   Settings,
   ChevronDown,
 } from "lucide-react";
@@ -61,20 +60,11 @@ export function Sidebar() {
   };
 
   const cycleTheme = () => {
-    if (theme === "light") setTheme("dark");
-    else if (theme === "dark") setTheme("system");
-    else setTheme("light");
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   const getThemeIcon = () => {
-    switch (theme) {
-      case "light":
-        return <Moon size={24} />;
-      case "dark":
-        return <Sun size={24} />;
-      default:
-        return <Laptop size={24} />;
-    }
+    return theme === "light" ? <Moon size={24} /> : <Sun size={24} />;
   };
 
   const toggleSubmenu = (label: string) => {
@@ -181,11 +171,7 @@ export function Sidebar() {
                 isOpen ? "opacity-100" : "opacity-0 w-0"
               }`}
             >
-              {theme === "light"
-                ? "Modo Escuro"
-                : theme === "dark"
-                ? "Modo Sistema"
-                : "Modo Claro"}
+              {theme === "light" ? "Modo Escuro" : "Modo Claro"}
             </span>
           </Button>
           <Button
