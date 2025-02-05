@@ -3,24 +3,44 @@
     {
       "id": "1",
       "email": "nilton@nilton.com",
-      "password": "senha123"
+      "password": "$2a$12$71f7srlW9ixfLeky0T/87.78nDIFf6623a4z.5Ysb8YCvuFE1TIje"
+    },
+    {
+      "id": "254e",
+      "email": "marina@marina.com",
+      "password": "$2a$12$71f7srlW9ixfLeky0T/87.78nDIFf6623a4z.5Ysb8YCvuFE1TIje"
     }
   ],
   "usuario": [
     {
       "id": "1",
-      "nome": "Nilton",
+      "nome": "Nilton Moraes Neto",
       "email": "nilton@nilton.com",
       "dateCreated": "13/11/1993",
       "sexo": "Masculino",
-      "telefone": "0",
-      "cep": "0",
+      "telefone": "",
+      "cep": "",
       "logradouro": "",
       "bairro": "",
       "cidade": "",
       "estado": "",
       "numero": "",
       "complemento": ""
+    },
+    {
+      "nome": "Marina",
+      "email": "marina@marina.com",
+      "dateCreated": "01/01/1900",
+      "sexo": "Feminino",
+      "telefone": "41999999999",
+      "cep": "",
+      "logradouro": "",
+      "bairro": "",
+      "cidade": "",
+      "estado": "",
+      "numero": "",
+      "complemento": "",
+      "id": "8f80"
     }
   ]
 }

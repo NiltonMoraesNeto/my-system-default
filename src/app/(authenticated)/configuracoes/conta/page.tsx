@@ -59,11 +59,7 @@ export default function Conta() {
     console.log("🚀  response - ", response);
 
     if (response && response.status === 201) {
-      const objLogin = {
-        email: values.email,
-        password: "senha123",
-      };
-      const responseLogin = await createLogin(objLogin);
+      const responseLogin = await createLogin(values.email, "teste");
       console.log("🚀  responseLogin - ", responseLogin);
       toast.success("Perfil", {
         description: "Usuário criado com sucesso",
