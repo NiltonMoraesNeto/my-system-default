@@ -23,7 +23,6 @@ export default function Perfil() {
           const user = JSON.parse(storedUser);
 
           const response = await usuarioGet(user.email);
-          console.log("🚀  response - ", response);
           setUserId(response.id);
 
           setUsuario(response);
@@ -97,7 +96,6 @@ export default function Perfil() {
 
   async function onSubmit(values: z.infer<typeof formPerfilSchema>) {
     const response = await usuarioPut(userId, values);
-    console.log("🚀  response - ", response);
     if (response && response.status === 200) {
       toast.success("Perfil", {
         description: "Dados alterados com sucesso",
