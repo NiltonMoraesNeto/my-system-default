@@ -18,6 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="script-src 'self' 'unsafe-eval' 'unsafe-inline'"
+        />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
