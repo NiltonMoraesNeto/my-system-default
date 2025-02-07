@@ -1,4 +1,11 @@
 {
+  "login":{
+    "title":"Login",
+    "placeholderEmail":"Email",
+    "placeholderPassword":"Senha",
+    "buttonEnter":"Entrar",
+    "buttonCreateAccount":"Não tem uma conta? Clique aqui para criar"
+  },
   "sidebar":{
       "changePassword": "Alterar senha",
       "label": "Preencha os campos abaixo para alterar a sua senha",

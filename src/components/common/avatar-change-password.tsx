@@ -14,7 +14,7 @@ export function AvatarChangePassword({
         <AvatarFallback>usa flag</AvatarFallback>
       </Avatar>
       <Avatar>
-        <AvatarImage src="/bra.png" onClick={() => changeLanguage("pt")} />
+        <AvatarImage src="/bra.png" onClick={() => changeLanguage("br")} />
         <AvatarFallback>bra flag</AvatarFallback>
       </Avatar>
       <Avatar>

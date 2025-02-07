@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/drawer";
 import { toast } from "sonner";
 import { usuarioPost } from "@/services/usuario";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -27,6 +28,8 @@ export default function Login() {
   const [newError, setNewError] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+
+  const { t } = useTranslation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,25 +68,25 @@ export default function Login() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-background">
       <div className="space-y-4 w-full max-w-md p-8 bg-card rounded-lg shadow-lg">
-        <h1 className="text-2xl font-bold text-center">Login</h1>
+        <h1 className="text-2xl font-bold text-center">{t("login.title")}</h1>
         {error && <p className="text-red-500 text-center">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
             type="email"
-            placeholder="Email"
+            placeholder={t("login.placeholderEmail")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
           <Input
             type="password"
-            placeholder="Senha"
+            placeholder={t("login.placeholderPassword")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
           <Button type="submit" className="w-full">
-            Entrar
+            {t("login.buttonEnter")}
           </Button>
         </form>
       </div>
@@ -94,7 +97,7 @@ export default function Login() {
             className="w-auto ml-5 dark:text-purple-600 dark:hover:bg-purple-300"
             onClick={() => setIsOpen(true)}
           >
-            Não tem uma conta? Clique aqui para criar
+            {t("login.buttonCreateAccount")}
           </Button>
         </DrawerTrigger>
         <DrawerContent>
