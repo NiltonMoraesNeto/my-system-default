@@ -1,0 +1,12 @@
+{
+  "sidebar":{
+      "changePassword": "Alterar senha",
+      "label": "Preencha os campos abaixo para alterar a sua senha",
+      "placeholder": "Senha",
+      "buttonSave": "Alterar",
+      "buttonCancel": "Cancelar",
+      "apiTitle": "Senha",
+      "apiMsgSuccess": "Dados alterados com sucesso",
+      "apiMsgError": "Não foi possível alterar os dados"
+  }
+}

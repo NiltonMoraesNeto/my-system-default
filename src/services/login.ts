@@ -49,6 +49,22 @@ export const createLogin = async (email: string, password: string) => {
   }
 };
 
+export const updatePassword = async (userId: string, newPassword: string) => {
+  try {
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(newPassword, salt);
+
+    const user = { password: hashedPassword };
+
+    const response = await api.patch(`/users/${userId}`, user);
+
+    return response;
+  } catch (error) {
+    console.error('Erro ao atualizar senha', error);
+    return false;
+  }
+};
+
 export const logout = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('user');

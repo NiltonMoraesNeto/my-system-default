@@ -1,0 +1,12 @@
+{
+  "sidebar":{
+      "changePassword": "Change password",
+      "label": "Fill in the fields below to change your password",
+      "placeholder": "Password",
+      "buttonSave": "Change",
+      "buttonCancel": "Cancel",
+      "apiTitle": "Password",
+      "apiMsgSuccess": "Data changed successfully",
+      "apiMsgError": "It was not possible to change the data"
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import "./../../config/i18n";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,11 @@ import {
   Settings,
   ChevronDown,
 } from "lucide-react";
-import { logout } from "@/services/login";
+import { logout, updatePassword } from "@/services/login";
+import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
+import { DrawerPassword } from "@/components/common/drawer-password";
+import { AvatarChangePassword } from "@/components/common/avatar-change-password";
 
 type MenuItem = {
   icon: React.ElementType;
@@ -49,6 +54,9 @@ export function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
   const { setTheme, theme } = useTheme();
+  const [isOpenPassword, setIsOpenPassword] = useState(false);
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogout = () => {
     logout();
@@ -126,6 +134,32 @@ export function Sidebar() {
     );
   };
 
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
+  const handleSubmitNewPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    const storedUser = localStorage.getItem("user");
+    const user = storedUser ? JSON.parse(storedUser) : null;
+
+    const success = await updatePassword(user.id, password);
+
+    if (success && success.status === 200) {
+      toast.success(t("sidebar.apiTitle"), {
+        description: t("sidebar.apiMsgSuccess"),
+      });
+      setIsOpenPassword(false);
+    } else {
+      toast.error(t("sidebar.apiTitle"), {
+        description: t("sidebar.apiMsgError"),
+      });
+    }
+  };
+
   return (
     <aside
       className={`
@@ -174,6 +208,18 @@ export function Sidebar() {
               {theme === "light" ? "Modo Escuro" : "Modo Claro"}
             </span>
           </Button>
+
+          <AvatarChangePassword changeLanguage={changeLanguage} />
+
+          <DrawerPassword
+            isOpenPassword={isOpenPassword}
+            setIsOpenPassword={setIsOpenPassword}
+            isOpen={isOpen}
+            error={error}
+            handleSubmitNewPassword={handleSubmitNewPassword}
+            password={password}
+            setPassword={setPassword}
+          />
           <Button
             variant="outline"
             onClick={handleLogout}
