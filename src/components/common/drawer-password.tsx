@@ -46,8 +46,8 @@ export function DrawerPassword({
         >
           <RectangleEllipsis size={24} />
           <span
-            className={`ml-2 transition-opacity duration-300 ${
-              isOpen ? "opacity-100" : "opacity-0 w-0"
+            className={`transition-opacity duration-300 ${
+              isOpen ? "opacity-100" : "opacity-0 w-0 -ml-2"
             }`}
           >
             {t("sidebar.changePassword")}

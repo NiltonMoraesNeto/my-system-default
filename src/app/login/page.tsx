@@ -5,19 +5,10 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { createLogin, login } from "@/services/login";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
 import { toast } from "sonner";
 import { usuarioPost } from "@/services/usuario";
 import { useTranslation } from "react-i18next";
+import { FormCadPassword } from "@/components/common/form-cad-password";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -54,14 +45,14 @@ export default function Login() {
       };
       await usuarioPost(newAccount);
       setIsOpen(false);
-      toast.success("Usuário", {
-        description: "Usuário criado com sucesso",
+      toast.success(t("createLogin.apiTitle"), {
+        description: t("createLogin.apiMsgSuccess"),
       });
     } else {
-      toast.error("Usuário", {
-        description: "Não foi criar o usuário",
+      toast.error(t("createLogin.apiTitle"), {
+        description: t("createLogin.apiMsgError"),
       });
-      setNewError("Não foi criar o usuário");
+      setNewError(t("createLogin.apiMsgError"));
     }
   };
 
@@ -90,54 +81,16 @@ export default function Login() {
           </Button>
         </form>
       </div>
-      <Drawer open={isOpen} onOpenChange={setIsOpen}>
-        <DrawerTrigger asChild>
-          <Button
-            variant="outline"
-            className="w-auto ml-5 dark:text-purple-600 dark:hover:bg-purple-300"
-            onClick={() => setIsOpen(true)}
-          >
-            {t("login.buttonCreateAccount")}
-          </Button>
-        </DrawerTrigger>
-        <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle>Criar nova conta</DrawerTitle>
-            <DrawerDescription>
-              Preencha os campos abaixo para criar sua conta.
-            </DrawerDescription>
-          </DrawerHeader>
-          <DrawerFooter>
-            {newError && <p className="text-red-500 text-center">{newError}</p>}
-            <form onSubmit={handleSubmitNewAccount} className="space-y-4">
-              <Input
-                type="email"
-                placeholder="Email"
-                value={newEmail}
-                onChange={(e) => setNewEmail(e.target.value)}
-                required
-              />
-              <Input
-                type="password"
-                placeholder="Senha"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                required
-              />
-              <Button
-                type="submit"
-                variant="secondary"
-                className="w-auto dark:text-purple-600 dark:hover:bg-purple-300 mr-5"
-              >
-                Criar conta
-              </Button>
-              <DrawerClose asChild>
-                <Button variant="outline">Cancelar</Button>
-              </DrawerClose>
-            </form>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
+      <FormCadPassword
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        newError={newError}
+        handleSubmitNewAccount={handleSubmitNewAccount}
+        newEmail={newEmail}
+        setNewEmail={setNewEmail}
+        newPassword={newPassword}
+        setNewPassword={setNewPassword}
+      />
     </div>
   );
 }

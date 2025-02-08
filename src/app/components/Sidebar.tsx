@@ -21,7 +21,7 @@ import { logout, updatePassword } from "@/services/login";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 import { DrawerPassword } from "@/components/common/drawer-password";
-import { AvatarChangePassword } from "@/components/common/avatar-change-password";
+import { AvatarChangeLanguage } from "@/components/common/avatar-change-language";
 
 type MenuItem = {
   icon: React.ElementType;
@@ -29,24 +29,6 @@ type MenuItem = {
   href: string;
   submenu?: MenuItem[];
 };
-
-const menuItems: MenuItem[] = [
-  { icon: Home, label: "Dashboard", href: "/dashboard" },
-  { icon: User, label: "Perfil", href: "/perfil" },
-  {
-    icon: Settings,
-    label: "Configurações",
-    href: "/configuracoes",
-    submenu: [
-      { icon: User, label: "Conta", href: "/configuracoes/conta" },
-      {
-        icon: Settings,
-        label: "Preferências",
-        href: "/configuracoes/preferencias",
-      },
-    ],
-  },
-];
 
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -57,6 +39,29 @@ export function Sidebar() {
   const [isOpenPassword, setIsOpenPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const { t, i18n } = useTranslation();
+
+  const menuItems: MenuItem[] = [
+    { icon: Home, label: t("sidebar.optionDashboard"), href: "/dashboard" },
+    { icon: User, label: t("sidebar.optionProfile"), href: "/perfil" },
+    {
+      icon: Settings,
+      label: t("sidebar.optionSettings"),
+      href: "/configuracoes",
+      submenu: [
+        {
+          icon: User,
+          label: t("sidebar.optionAccount"),
+          href: "/configuracoes/conta",
+        },
+        {
+          icon: Settings,
+          label: t("sidebar.optionPreferences"),
+          href: "/configuracoes/preferencias",
+        },
+      ],
+    },
+  ];
 
   const handleLogout = () => {
     logout();
@@ -134,8 +139,6 @@ export function Sidebar() {
     );
   };
 
-  const { t, i18n } = useTranslation();
-
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
@@ -176,7 +179,7 @@ export function Sidebar() {
               isOpen ? "opacity-100" : "opacity-0"
             }`}
           >
-            Menu
+            {t("sidebar.title")}
           </span>
           <Button
             variant="ghost"
@@ -196,20 +199,25 @@ export function Sidebar() {
             size="icon"
             onClick={cycleTheme}
             className={`w-full transition-all duration-300 ${
-              isOpen ? "justify-start" : "justify-center"
+              isOpen ? "flex items-center justify-center" : "p-2"
             }`}
           >
             {getThemeIcon()}
             <span
               className={`ml-2 transition-opacity duration-300 ${
-                isOpen ? "opacity-100" : "opacity-0 w-0"
+                isOpen ? "opacity-100" : "opacity-0 w-0 -ml-4"
               }`}
             >
-              {theme === "light" ? "Modo Escuro" : "Modo Claro"}
+              {theme === "light"
+                ? t("sidebar.darkMode")
+                : t("sidebar.lightMode")}
             </span>
           </Button>
 
-          <AvatarChangePassword changeLanguage={changeLanguage} />
+          <AvatarChangeLanguage
+            changeLanguage={changeLanguage}
+            isOpen={isOpen}
+          />
 
           <DrawerPassword
             isOpenPassword={isOpenPassword}
@@ -229,11 +237,11 @@ export function Sidebar() {
           >
             <LogOut size={24} />
             <span
-              className={`ml-2 transition-opacity duration-300 ${
-                isOpen ? "opacity-100" : "opacity-0 w-0"
+              className={`transition-opacity duration-300 ${
+                isOpen ? "opacity-100" : "opacity-0 w-0 -ml-2"
               }`}
             >
-              Sair
+              {t("sidebar.buttonExit")}
             </span>
           </Button>
         </div>
