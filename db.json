@@ -9,6 +9,11 @@
       "id": "254e",
       "email": "marina@marina.com",
       "password": "$2a$10$yzy6sv6qt3UIL01WJpz6SegvmZrIgtqlolaKRuAM/oWSTqLBkwp3y"
+    },
+    {
+      "id": "2",
+      "email": "teste@teste.com",
+      "password": "1234"
     }
   ],
   "usuario": [
