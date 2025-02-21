@@ -2,6 +2,8 @@ Projeto feito em [React](https://react.dev/) com [Next.js](https://nextjs.org), 
 ## Getting Started
 
 ```bash
+Adicionar um .env na raiz do projeto
+NEXT_PUBLIC_API_URL='http://localhost:3001'
 npm i
 npm run server
 npm run dev
